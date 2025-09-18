@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOWNLOAD CLINT SAMP</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnvTNSrNqf-YGAEFpsM1GhDqb7wnE5NUv25eZDjXQH_LeyZl4wINKncok&s=10') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .container {
+      position: relative; 
+      top: auto;
+      left: auto;
+      transform: none;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 12px;
+      border-radius: 25px;
+      box-shadow: 0 0 3px #9069e9;
+      text-align: center;
+      width: 99%;
+      max-width: 396px;
+      z-index: 3;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-height: 93vh;
+      overflow-y: auto;
+      border: 3px solid transparent;
+      border-radius: 9px;
+      background: transparent;
+      position: relative;
+      animation: rainbow 3s infinite;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #9069e3;
+      box-shadow: 0 0 20px #9069e3;
+      margin: 0 auto 20px;
+      display: flex;
+    }
+    .rain {
+      position: absolute;
+      bottom: 100%; /* Dimulai dari atas */
+      width: 3px;
+      height: 69px;
+      background: linear-gradient(to bottom, rgba(142, 9, 255, 0.9), rgba(255, 9, 255, 0.6));
+      animation: fall 1.6s linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+    .btn {
+      flex: 1 1 120px;      /* Lebar minimal 120px, fleksibel */
+      max-width: 180px;     /* Maksimal lebar tombol */
+      padding: 12px;
+     background: #111;
+      color: #9069e9;
+     border: none;
+     border-radius: 15px;
+      font-size: 16px;
+      cursor: pointer;
+     box-shadow: 0 0 10px #9069e9;
+     transition: 0.2s;
+     text-align: center;
+    }
+
+    .btn:hover {
+      background: linear-gradient(3deg, #9069e9, #090909);
+      box-shadow: 0 0 9px #9069e9;
+    }
+    
+    /* Password popup */
+    #passwordPopup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right:0; bottom:0;
+      background: rgba(0,0,0,0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+  }
+  #passwordPopup.active {
+    display: flex;
+  }
+  #passwordForm {
+    background: #111;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #9069e9;
+    width: 320px;
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+  }
+  #passwordForm h2 {
+    margin-bottom: 15px;
+    color: #9069e9;
+  }
+  #passwordForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  #passwordForm button {
+    padding: 10px 20px;
+    background: #9069e9;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 0 15px #9069e9;
+    font-size: 16px;
+  }
+  #passwordForm .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    color: #9069e9;
+    cursor: pointer;
+  }
+  #passwordError {
+    color: #ff5555;
+    margin-bottom: 10px;
+    min-height: 18px;
+  }
+  
+    #popupBg {
+    display: none;
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 11000;
+  }
+  #popupContent {
+    background: #111;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #9069e9;
+    text-align: center;
+    color: #0ff;
+    font-size: 18px;
+    position: relative;
+  }
+  #popupContent .copy-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #9069e9;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 0 15px #9069e9;
+    font-size: 16px;
+  }
+    .popup img {
+      max-width: 100%;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: #9069e9;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #9069e9;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px #9069e9;
+    }
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #000;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px #9069e9;
+      cursor: pointer;
+      z-index: 3;
+    }
+    @keyframes rainbow {
+      0% { border-color: red; }
+      14% { border-color: orange; }
+      28% { border-color: yellow; }
+      42% { border-color: green; }
+      57% { border-color: blue; }
+      71% { border-color: indigo; }
+      85% { border-color: violet; }
+      100% { border-color: red; }
+    }
+    .music-popup {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      left: 21px;
+      width: 250px;
+      background: #111;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #9069e9;
+      z-index: 100;
+    }
+    .music-popup .close-btn {
+      top: 9px;
+      right: 15px;
+    }
+    .music-list button {
+      background: #9069e9;
+      color: #000;
+      margin: 6px 0;
+      padding: 9px;
+      border: none;
+      border-radius: 9px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 12px;
+      color: #aaa;
+    }
+    .bottom-buttons {
+      margin-top: auto;
+      margin-bottom: 9px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <canvas class="particles"></canvas>
+  <div class="container">
+    <div class="profile-img">
+      <img src="https://zelvaroscnl.ct.ws/zelvaros.png" alt="profile" style="width: 100%; height: 100%; border-radius: 99%;" />
+    </div>
+    <link rel="stylesheet" type="text/css" href="https://cdn.prinsh.com/NathanPrinsley-textstyle/nprinsh-stext.css" />
+    <div class="nprinsley-text-rainbowan">DOWNLOAD CLINT ALYN</div><br></br>
+    <div class="bottom-buttons">
+  <button class="btn" onclick="openPasswordPopup('alyn19', 'https://sub4unlock.co/BQWw')">ALYN V19 (NO ADS)</button>
+  <button class="btn" onclick="openPasswordPopup('james', 'https://sfl.gl/w3QPj6')">COMING SOON</button>
+  <button class="btn" onclick="openPasswordPopup('thunder', 'https://sfl.gl/q7UVvFaQ')">COMING SOON</button>
+</div>
+</center>
+    <footer>© Powered By Zelvaros Channel</footer>
+  </div>
+
+<!-- Password popup -->
+<div id="passwordPopup">
+  <form id="passwordForm" onsubmit="return submitPassword(event)">
+    <div class="close-btn" onclick="closePasswordPopup()">×</div>
+    <h2>Masukkan Password</h2>
+    <input type="password" id="passwordInput" placeholder="Dilaran share password" autocomplete="off" required />
+    <div id="passwordError"></div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- Popup salin -->
+<div id="popupBg" onclick="closeCopyPopup()">
+  <div id="popupContent"></div>
+</div>
+
+<script>
+  // Password per tombol dan hari (0=minggu, 1=senin, ..., 6=sabtu)
+  const passwords = {
+    alyn19:     ['alyn19', 'alyn19', 'alyn19', 'alyn19', 'alyn19', 'alyn19', 'alyn19'],
+    james:    ['clintjames', 'clintjames', 'clintjames', 'clintjames', 'clintjames', 'clintjames', 'clintjames'],
+    thunder:  ['thunder2025', 'thunder2025', 'thunder2025', 'thunder2025', 'thunder2025', 'thunder2025', 'thunder2025'],
+  };
+
+  let currentKey = null;
+  let currentLink = null;
+
+  function openPasswordPopup(key, link) {
+    currentKey = key;
+    currentLink = link;
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordError').textContent = '';
+    document.getElementById('passwordPopup').classList.add('active');
+    document.getElementById('passwordInput').focus();
+  }
+
+  function closePasswordPopup() {
+    document.getElementById('passwordPopup').classList.remove('active');
+    currentKey = null;
+    currentLink = null;
+  }
+
+  function submitPassword(event) {
+    event.preventDefault();
+    const input = document.getElementById('passwordInput').value.trim();
+    const today = new Date().getDay();
+    if (!currentKey || !passwords[currentKey]) {
+      document.getElementById('passwordError').textContent = 'Password untuk tombol ini belum tersedia.';
+      return false;
+    }
+    const correctPassword = passwords[currentKey][today];
+    if (input === correctPassword) {
+      window.open(currentLink, '_blank', 'noopener,noreferrer');
+      closePasswordPopup();
+    } else {
+      document.getElementById('passwordError').textContent = 'Password salah, coba lagi.';
+    }
+    return false;
+  }
+
+  // Fungsi popup salin (copy)
+  function showPopup(number) {
+    const popupBg = document.getElementById('popupBg');
+    const popupContent = document.getElementById('popupContent');
+    popupContent.innerHTML = `
+      <h3 style="color:#0ff">${number}</h3>
+      <button class="copy-btn" onclick="copyToClipboard('${number}')">Salin</button>
+    `;
+    popupBg.style.display = 'flex';
+  }
+  function closeCopyPopup() {
+    const popupBg = document.getElementById('popupBg');
+    popupBg.style.display = 'none';
+  }
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Nomor berhasil disalin: ' + text);
+      closeCopyPopup();
+    }).catch(() => {
+      alert('Gagal menyalin nomor.');
+    });
+  }
+</script>
+
+  <div class="popup-bg" id="popupBg">
+    <div class="popup" id="popup">
+      <div class="close-btn" onclick="closePopup()">×</div>
+      <div id="popupContent"></div>
+    </div>
+  </div>
+
+  <div class="music-btn" onclick="toggleMusicPopup()">🎵</div>
+  <div class="music-popup" id="musicPopup">
+    <div class="close-btn" onclick="toggleMusicPopup()">×</div>
+    <div class="music-list">
+      <button onclick="playSong('https://files.catbox.moe/d7vvgz.mp3')">🎵 Fireflies</button>
+      <button onclick="playSong('https://files.catbox.moe/unbo27.mp3')">🎵 Tie me down</button>
+      <button onclick="playSong('https://files.catbox.moe/8smnze.mp3')">🎵 Dj 8 Letters</button>
+    </div>
+  </div>
+
+  <audio id="audioPlayer"></audio>
+
+  <script>
+    function showPopup(number) {
+      document.getElementById('popupContent').innerHTML = `
+        <h3 style="color:#0ff">${number}</h3>
+        <button class="copy-btn" onclick="copyToClipboard('${number}')">Salin</button>
+      `;
+      document.getElementById('popupBg').style.display = 'flex';
+    }
+
+    function createRain() {
+      const rain = document.createElement('div');
+      rain.className = 'rain';
+      rain.style.left = Math.random() * window.innerWidth + 'px';
+      rain.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      document.body.appendChild(rain);
+
+      setTimeout(() => {
+        rain.remove();
+      }, 1500);
+    }
+
+    setInterval(createRain, 200);
+
+    function showQRPopup(imgSrc) {
+      const localImgPath = "qris.png"; // file lokal QRIS
+
+      document.getElementById('popupContent').innerHTML = `
+        <img src="${localImgPath}" alt="QRIS">
+        <p style="color:#0ff">Klik tombol untuk mengunduh QRIS</p>
+        <a href="${localImgPath}" download="qris_nasz.png">
+          <button class="copy-btn">⬇️ Unduh QRIS</button>
+        </a>
+      `;
+      document.getElementById('popupBg').style.display = 'flex';
+    }
+
+    function showProductList() {
+      const content = `
+<pre style="color:#9069e9; text-align:left;">
+ZELVAROS SCRIPT MLBB🔥
+
+✮ Desain Premium
+✮ Simple Download
+✮ Aman Dan Terpercaya
+𝐃𝐚𝐧 𝐦𝐚𝐬𝐢𝐡 𝐛𝐚𝐧𝐲𝐚𝐤 𝐥𝐚𝐠𝐢 𝐲𝐚𝐧𝐠 𝐥𝐚𝐢𝐧𝐧𝐲𝐚
+</pre>
+`;
+      document.getElementById('popupContent').innerHTML = content;
+      document.getElementById('popupBg').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('popupBg').style.display = 'none';
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+      alert("Disalin: " + text);
+    }
+
+    function toggleMusicPopup() {
+      const popup = document.getElementById('musicPopup');
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function playSong(src) {
+      const audio = document.getElementById('audioPlayer');
+      audio.src = src;
+      audio.play();
+      toggleMusicPopup();
+    }
+
+    // Particles
+    const canvas = document.querySelector('.particles');
+    const ctx = canvas.getContext('2d'); // diperbaiki dari '3d' ke '2d'
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speedX: (Math.random() - 0.5) * 2,
+        speedY: (Math.random() - 0.5) * 2,
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.fillStyle = '#0ff';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+</body>
+</html>
