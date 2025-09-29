@@ -1,1062 +1,582 @@
-  <!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZelvarosCNL</title>
-  <link rel="stylesheet" href="https://zelvaroscnl.ct.ws/Css/style.css" />
-  <style>
-    :root {
-      --bg: #0e0e0e;
-      --gold: #d4af37;
-      --text: #f5f5f5;
-      --glass: rgba(255, 255, 255, 0.05);
-    }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>HOME | ZELVAROS</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', sans-serif;
-    }
-    
-    .clock-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,0);
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-            .top-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background-color: #1a1a1a;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-        .footer1{
-        border-radius: 16px;
-      border: 1px solid ;
-      border-color: red;
-      padding: 1rem 1rem 1rem;
-        }
-        .clock {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
+  <!-- Favicons -->
+  <link href="/assets/img/zelvaros.png" rel="icon">
+  <link href="/assets/img/zelvaros.png" rel="apple-touch-icon">
 
-        .time-segment {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 15px;
-            min-width: 100px;
-            color: #00ff9f;
-            font-size: 4rem;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        .time-segment:hover {
-            transform: scale(1.05);
-        }
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        .segment-label {
-            position: absolute;
-            bottom: -25px;
-            left: 0;
-            width: 100%;
-            color: #4eb8dd;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
-        .date {
-            margin-top: 20px;
-            color: #4eb8dd;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 600px) {
-            .time-segment {
-                font-size: 2.5rem;
-                padding: 10px;
-                min-width: 60px;
-            }
-            .clock-container {
-                padding: 20px;
-            }
-        }
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-container img {
-      height: 40px;
-    }
-
-    .logo-container h1 {
-      font-size: 1.3rem;
-      color: #0d86ff;
-      font-weight: bold;
-    }
-
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .menu-toggle .bar {
-      width: 25px;
-      height: 3px;
-      border-radius: 2px;
-      background-image: linear-gradient(
-        90deg,
-        #fff,
-        #aaa,
-        #e0e0e0,
-        #b0b0b0
-      );
-    }
-
-    nav.sosmed-links {
-      position: absolute;
-      top: 60px;
-      right: 1rem;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-      padding: 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 1000;
-    }
-
-    nav.sosmed-links a {
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-    }
-
-    nav.sosmed-links a:hover {
-      color: var(--gold);
-    }
-
-    nav.sosmed-links img {
-      width: 20px;
-      height: 20px;
-      filter: invert(1);
-    }
-
-    .hero {
-      height: 100vh;
-      background: url('zelvaros.png') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      background: var(--glass);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 215, 0);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    .hero h2 {
-      font-size: 1rem;
-      color: #ffd700;
-    }
-
-    /* Perbaikan: gunakan kelas untuk tombol WhatsApp */
-    .whatsapp-float-button {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 60px;
-      height: 60px;
-      background-color: #25d366; /* Warna hijau WhatsApp */
-      color: #ffffff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      cursor: pointer;
-      text-decoration: none; /* Menghilangkan garis bawah dari link */
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .whatsapp-float-button:hover {
-      transform: scale(1.1);
-    }
-
-    .whatsapp-float-button svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    section {
-      padding: 1rem 1rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h3 {
-      text-align: center;
-      color: var(--gold);
-      font-size: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    #searchInput {
-  width: 100%;
-  max-width: 300px; /* lebih ramping */
-  margin: 15px auto;
-  display: block;
-  padding: 6px 10px; /* lebih kecil */
-  font-size: 14px;   /* lebih kecil */
-  border-radius: 6px;
-  border: none;
-}
-
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto; /* center */
-}
-
-.search-wrapper input {
-  width: 100%;
-  padding: 6px 10px 6px 34px; /* padding lebih kecil */
-  font-size: 13px; /* lebih ramping */
-  border-radius: 20px; /* lebih membulat */
-  border: 1px solid #555; /* tipis & elegan */
-  background-color: #2a2a2a;
-  color: white;
-  outline: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* bayangan halus */
-  transition: all 0.2s ease;
-}
-
-.search-wrapper input:focus {
-  border-color: #2196F3; /* garis biru saat fokus */
-  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
-}
-
-    .apps-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* default 2 kolom untuk layar kecil */
-  gap: 20px;
-  padding: 20 20px 40px;
-}
-
-/* Tambahkan media query untuk layar >= 768px */
-@media (min-width: 768px) {
-  .apps-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk tablet & desktop */
-  }
-}
-
-    .app-card {
-      background-color: #2a2a2a;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-      position: relative;
-    }
-
-    .app-card:hover {
-      transform: scale(1.03);
-    }
-
-    .app-card img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
-    }
-
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background-color: crimson;
-      color: white;
-      font-size: 12px;
-      padding: 3px 6px;
-      border-radius: 4px;
-    }
-
-    .full {
-      background-color: gold;
-      color: black;
-    }
-
-    .app-title {
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .app-version, .app-category {
-      font-size: 13px;
-      color: #ccc;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: #2a2a2a;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      color: white;
-      position: relative;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-    .card {
-      background: var(--glass);
-      padding: 2rem 2rem 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 215, 0, 0.6);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-    }
-
-    .card h4 {
-      color: var(--gold);
-      font-size: 1.3rem;
-      margin: 1rem 0 0.75rem 0;
-    }
-
-    .card p {
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 1rem;
-    }
-
-    .card-img {
-      width: 100%;
-      height: 12rem;
-      object-fit: cover;
-      border-radius: 16px 16px 0 0;
-      user-select: none;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .akses-kecil {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem auto -1rem auto;
-    }
-
-    .popup-bg {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 99;
-      justify-content: center;
-      align-items: center;
-    }
-    .popup {
-      background: #000;
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      width: 90%;
-      max-width: 280px;
-      max-height: 90vh;
-      overflow-y: auto;  
-      box-shadow: 0 0 30px #9069e9;
-      position: relative;
-    }
-    .popup img {
-      max-width: 100%;
-      margin-bottom: 15px;
-      border-radius: 10px;
-    }
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      color: #9069e9;
-      font-size: 22px;
-      cursor: pointer;
-    }
-    .copy-btn {
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #9069e9;
-      color: black;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 0 15px #9069e9;
-    }
-    .music-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #000;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px #9069e9;
-      cursor: pointer;
-      z-index: 3;
-    }
-    
-    .music-popup {
-      display: none;
-      position: fixed;
-      bottom: 90px;
-      left: 21px;
-      width: 250px;
-      background: #111;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #9069e9;
-      z-index: 100;
-    }
-    .music-popup .close-btn {
-      top: 9px;
-      right: 15px;
-    }
-    .music-list button {
-      background: #9069e9;
-      color: #000;
-      margin: 6px 0;
-      padding: 9px;
-      border: none;
-      border-radius: 9px;
-      width: 100%;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    
-    .bottom-buttons {
-      margin-top: auto;
-      margin-bottom: 9px;
-    }
-.download-btn {
-      margin-top: 20px;
-      background-color: #ffcc00;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.9);}
-      to {opacity: 1; transform: scale(1);}
-    }
-
-.top-container {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.hamburger {
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  padding-right: 15px; /* jarak dengan judul */
-}
-
-.left-icon,
-.right-icon {
-  width: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.center-title {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.center-title h1 {
-  margin: 0;
-  font-size: 24px;
-  color: #708090;
-}
-
-.logo-kanan {
-  height: 35px;
-}
-
-.menu-icon {
-  position: absolute;
-  left: 20px;
-  top: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 18px;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.menu-icon span {
-  height: 3px;
-  background-color: white;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-    .btn-kecil.download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-weight: bold;
-      font-size: 0.9rem;
-      margin-top: auto;
-      background-color: #0d86ff;
-      color: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #0d86ffaa;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-kecil.download-btn:hover {
-      background-color: #0a5ecb;
-      box-shadow: 0 0 15px #0a5ecbcc;
-    }
-
-    .download-icon {
-      width: 1rem;
-      height: 1rem;
-    }
-
-
-    .zelvaros {
-      margin-right: 9px;
-      padding: 15px 25px;
-      font-size: 24px;
-      text-align: center;
-      cursor: pointer;
-      outline: none;
-      color: #fff;
-      background-color: #009688;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 9px #000;
-    }
-
-    /* Darker background on mouse-over */
-    .zelvaros:hover {
-      background-color: #a5a6a7;
-    }
-
-    .zelvaros:active {
-      background-color: #3e8e41;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-    }
-
-    /* Wall Clock Styling */
-    #wallClock {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      font-weight: bold;
-      user-select: none;
-    }
-  </style>
+  <!-- =======================================================
+  * Template Name: Impact
+  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
-<body>
-  <header>
-    <div class="logo-container">
-      <img src="images/zelvaros.png" alt="Zelvaros" />
-      <h1>Zelvaros Channel</h1>
+
+<body class="index-page">
+
+  <header id="header" class="header fixed-top">
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">ZELVAROS</h1>
+          <span>.</span>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="client.html">Client Samp</a></li>
+            <li><a href="modpack.html">Modpack Samp</a></li>
+            <li><a href="monetloader.html">Monetloader Samp</a></li>
+            <li><a href="scriptml.html">Script Mlbb</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
+
     </div>
 
-    <div class="menu-toggle" id="menuToggle" role="button" aria-label="Toggle menu sosial media" tabindex="0">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-
-    <nav class="sosmed-links" id="sosmedLinks" aria-label="Menu sosial media">
-      <a href="https://zelvaroscnl.blogspot.com" target="_blank" rel="noopener noreferrer">
-        <img src="https://www.svgrepo.com/show/494265/blogger-round.svg" alt="Blog" />
-        Blog
-      </a>
-      <a href="https://discord.gg/VTEqQqts3n" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" />
-        Discord
-      </a>
-      <a href="https://www.youtube.com/@ZelvarosCnlV2" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" />
-        YouTube
-      </a>
-      <a href="https://www.tiktok.com/@zelvaroscnl" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" />
-        TikTok
-      </a>
-      <a href="https://saweria.co/zelvaroscnl" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.icons8.com/ios-filled/50/money--v1.png" alt="Money" />
-        Saweria
-      </a>
-    </nav>
   </header>
 
-  <br />
-<section id="layanan">
-    <!-- Wall Clock -->
-    <div class="clock-container">
-        <div class="clock">
-            <div class="time-segment" id="hours">00
-                <div class="segment-label">Hours</div>
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section accent-background">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-5 justify-content-between">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h2><span>Welcome to </span><span class="accent">Zelvaros</span></h2>
+            <p>Zelvaros adalah tempat download script mobile legends dan client samp ter'aman tanpa takut akan resiko akun terkena banned atau terkena keylogger</p>
+            <div class="d-flex">
+              <a href="#about" class="btn-get-started">Tentang Saya</a>
+              <a href="/" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>How To Download?</span></a>
             </div>
-            <div class="time-segment" id="minutes">00
-                <div class="segment-label">Minutes</div>
-            </div>
-            <div class="time-segment" id="seconds">00
-                <div class="segment-label">Seconds</div>
-            </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2">
+            <img src="/assets/img/hero-img.svg" class="img-fluid" alt="">
+          </div>
         </div>
-        <div class="date" id="date">Loading...</div>
-    </div>
-    <br><br></br></br>
+      </div>
 
-      <!-- Card 2: Desain Premium -->
-      <article class="card" role="listitem">
-        <h4>Desain Premium</h4>
-        <p>Kami membuat tampilan elegan yang mencerminkan kelas Anda.</p>
-      </article>
-  <br></br>
-      <!-- Card 3: Simple Download -->
-      <article class="card" role="listitem">
-        <h4>Simple Download</h4>
-        <p>Download secara mudah tanpa adanya shortlink yang menumpuk.</p>
-      </article>
-  <br></br>
-      <!-- Card 4: Aman Dan Terpercaya -->
-      <article class="card" role="listitem">
-        <h4>Aman Dan Terpercaya</h4>
-        <p>Download dengan aman dan terpercaya tanpa takut akan resiko akun terbanned atau terkena keylogger.</p>
-      </article>
-    </div>
-  </section>
-    <center>
-    <a href="Skin" target="_blank" rel="noopener noreferrer">
-      <button class="zelvaros" type="button"><i class="fa fa-download"></i> Script Mlbb</button>
-    </a>
-    <a href="Clint" target="_blank" rel="noopener noreferrer">
-      <button class="zelvaros" type="button"><i class="fa fa-download"></i> Clint Samp</button>
-    </a>
-  </center>
-  <br></br>
-   <div class="container"> 
-            <footer class="footer1">
-      <p style="font-family: 'Arial', sans-serif; font-size: 40px; color: gold;"> INFO UPDATE
-        </p>
-        </footer
-        <br></br>
-       
-    <section id="layanan">
-      <article class="card" role="listitem">
-        <img class="card-img" src="https://zelvaroscnl.github.io/website/images/james106.png" alt="UPDATE ALYN" />
-        <h4>CLIENT JAMES 1.0.6(b)</h4>
-        <p>KEUNGGULAN : </p><br>
-        <p>NO ADS - SUPPORT MONET/CLEO/AML - NO BUG SOUND - BLOCKPUNCH - TOGJIGGLE - DLL</p></p></br>
-        <a href="clint/james" class="btn-kecil download-btn" target="_blank" rel="noopener noreferrer" aria-label="DOWNLOAD">
-          Download
-          <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-            <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 01-1.414-1.414L13.586 11H4a1 1 0 010-2h9.586l-4.707-4.707a1 1 0 111.414-1.414l6 6a1 1 0 010 1.414l-6 6z" clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </article>
-      </section>
-      <section id="layanan">
-      <article class="card" role="listitem">
-        <img class="card-img" src="https://zelvaroscnl.github.io/Website/images/update/20250910_121058.jpg" alt="UPDATE ZArchiver" />
-        <h4>UPDATE ZARCHIVER PRO V5.7.4</h4>
-        <p>KEUNGGULAN : </p><br>
-        <p>BYPASS VERSI BERBAYAR - BYPASS UKURAN DAN RESOLUSI - MEMBENARKAN BAHASA INDONESIA - MENGOPTIMALKAN SUMBER DAYA - </p></br>
-        <a href="#" class="btn-kecil download-btn" target="_blank" rel="noopener noreferrer" aria-label="UPDATE ZARCHIVER">
-          Download
-          <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-            <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 01-1.414-1.414L13.586 11H4a1 1 0 010-2h9.586l-4.707-4.707a1 1 0 111.414-1.414l6 6a1 1 0 010 1.414l-6 6z" clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </article>
-      </section>
-        <br></br>
-   <div class="container"> 
-            <footer class="footer1">
-      <p style="font-family: 'Arial', sans-serif; font-size: 40px; color: gold;"> APPS
-        </p>
-        </footer
-        <br></br>
-        <div class="apps-grid" id="appsGrid"></div>
+      <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
+        <div class="container position-relative">
+          <div class="row gy-4 mt-5">
 
-<!-- Modal -->
-<div id="appModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    
-    <h2 id="modalTitle" style="margin-top: 0; text-align: center;"></h2>
-    
-    <div style="display: flex; align-items: center; gap: 15px; margin: 15px 0;">
-      <img id="modalIcon" src="" alt="Icon" style="width: 50px; height: 50px; border-radius: 8px;">
-      <div>
-        <p id="modalVersion" style="margin: 4px 0; font-size: 14px; color: #ccc;"></p>
-        <p id="modalCategory" style="margin: 0; font-size: 13px; color: #aaa;"></p>
+            <div class="col-xl-3 col-md-6">
+              <div class="icon-box">
+                <div class="icon">
+                  <i class="bi bi-rocket"></i></div>
+                <h4 class="title"><a href="client.html" class="stretched-link">Client Samp</a></h4>
+              </div>
+            </div><!--End Icon Box -->
+
+            <div class="col-xl-3 col-md-6">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-rocket"></i></div>
+                <h4 class="title"><a href="modpack.html" class="stretched-link">Modpack Samp</a></h4>
+              </div>
+            </div><!--End Icon Box -->
+
+            <div class="col-xl-3 col-md-6">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-rocket"></i></div>
+                <h4 class="title"><a href="monetloader.html" class="stretched-link">Monetloader Samp</a></h4>
+              </div>
+            </div><!--End Icon Box -->
+
+            <div class="col-xl-3 col-md-6">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-rocket"></i></div>
+                <h4 class="title"><a href="scriptml.php" class="stretched-link">Script Mobile Legends</a></h4>
+              </div>
+            </div><!--End Icon Box -->
+
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Us<br></h2>
+        <img src="https://zelvaroscnl.github.io/img/zelvaros.png" class="img-fluid rounded-4 mb-4" alt="">
+        <p>Halo, perkenalkan nama saya Samuel. Tujuan saya membuat website ini hanya sekedar mengisi waktu luang, dan untuk mempermudah bagi saya untuk mendownload atau saling berbagi aplikasi atau file-file yang berhubungan dengan samp dan juga mobile legends. Berikut adalah keuntungan download di zelvaroscnl</p>
+      </div><!-- End Section Title -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="content ps-0 ps-lg-5">
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Aman dari akun terbanned</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>File terhindar dari malware atau keylogger</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Download dengan cepat dan mudah tanpa safelink yang menumpuk</span></li>
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+            
+    </section><!-- /About Section -->
+    <!-- Clients Section -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Partner</h2>
+    <section id="clients" class="clients section">
+      
+      <div class="container">
+        
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/zelvaros.png" class="img-fluid" alt=""></div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+
+          <div class="col-lg-5">
+            <img src="assets/img/stats-img.svg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-7">
+
+            <div class="row gy-4">
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="958" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Pengguna Happy</strong> <span>Pengguna yang sudah menggunakan website</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Projects</strong> <span>yang sudah dibagikan</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-headset flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Support Center</strong> <span>Siap melayani</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-people flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Moderator</strong> <span>Yang siap membagikan file</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      <div class="container">
+        <img src="/assets/img/zelvaros.png" alt="">
+        <div class="content row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <a href="/" class="glightbox play-btn"></a>
+              <h3>Cara download di zelvaros</h3>
+              <p>Video di atas adalah tutorial bagaimana cara download file atau client di zelvaros channel</p>
+              <a class="cta-btn" href="#">Play Video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Services Section -->
+
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Team Zelvaros</h2>
+        <p>Berikut adalah orang orang yang mengelola Zelvaros Channel</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="/assets/img/zelvaros.png" class="img-fluid" alt="">
+              <h4>Samuel</h4>
+              <span>Owner</span>
+              <div class="social">
+                <a href="https://www.youtube.com/@samuelfct"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.tiktok.com/@samuel08_samp"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1BTC9Y8tQA/"><i class="bi bi-facebook"></i></a>
+                <a href="https://discord.gg/VneRss8wKs"><i class="bi bi-discord"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbBUKV8KAwEoVOSvfs1u"><i class="bi bi-whatsapp"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7x3syf9DwIbhFkLcDdN_q5jBRYN85ibFGO-0DFXRL7w&s=10" class="img-fluid" alt="">
+              <h4>Rifqi Muhammad Hanif</h4>
+              <span>Moderator APK</span>
+              <div class="social">
+                <a href="https://youtube.com/@rifqikim"><i class="bi bi-youtube"></i></a>
+                <a href="https://discord.gg/VneRss8wKs"><i class="bi bi-discord"></i></a>
+                <a href="https://www.facebook.com/share/19LHGuYY9Z/"><i class="bi bi-facebook"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbBUKV8KAwEoVOSvfs1u"><i class="bi bi-whatsapp"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <h4>William Anderson</h4>
+              <span>Content</span>
+              <div class="social">
+                <a href="/"><i class="bi bi-youtube"></i></a>
+                <a href="/"><i class="bi bi-tiktok"></i></a>
+                <a href="/"><i class="bi bi-facebook"></i></a>
+                <a href="/"><i class="bi bi-whatsapp"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <h4>Amanda Jepson</h4>
+              <span>Accountant</span>
+              <div class="social">
+                <a href="/"><i class="bi bi-youtube"></i></a>
+                <a href="/"><i class="bi bi-tiktok"></i></a>
+                <a href="/"><i class="bi bi-facebook"></i></a>
+                <a href="/"><i class="bi bi-whatsapp"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Team Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Pertanyaan yang Sering</span><strong>Diajukan</strong></h3>
+              <p>
+                Berikut adalah pertanyaan yang sering di tanyakan dan sudah kami rangkum
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Apakah file yang kami bagikan aman?</span></h3>
+                <div class="faq-content">
+                  <p>Ya file yang kami bagikan aman, dan pastinya tidak ada malware ataupun keylogger. kalian bisa cek sendiri di virustotal</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Apakah file yang kami bagikan ter encrypt?</span></h3>
+                <div class="faq-content">
+                  <p>Tidak, file yang kami bagikan tentunya tidak terencrypt agar kalian bisa memastikan file tersebut tidak ada keylogger</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Apakah moderator kami ramah dan fast respon?</span></h3>
+                <div class="faq-content">
+                  <p>Tentu admin/moderator kami pastikan akan ramah dan selalu fast respon selagi pada batas wajarnya dan pada jam kosongnya</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+    <!-- Recent Posts Section -->
+    <section id="recent-posts" class="recent-posts section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Artikel</h2>
+        <p>Artikel terbaru dari zelvaros channel</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <article>
+
+              <div class="post-img">
+                <img src="https://zelvaroscnl.github.io/website/images/james106.png" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">Client Samp</p>
+
+              <h2 class="title">
+                <a href="/">Update Client James 1.0.6(b) TERBARU</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="https://zelvaroscnl.github.io/img/zelvaros.png" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author">Zelvaros</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Sep 20, 2025</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <article>
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">Sports</p>
+
+              <h2 class="title">
+                <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="assets/img/blog/blog-author-2.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author">Allisa Mayer</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Jun 5, 2022</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <article>
+
+              <div class="post-img">
+                <img src="https://zelvaroscnl.github.io/website/images/james106.png" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">SAMP</p>
+
+              <h2 class="title">
+                <a href="blog-details.html">update alyn v1.0.6(b)</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author">Mark Dower</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Jun 22, 2022</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+        </div><!-- End recent posts list -->
+
+      </div>
+
+    </section><!-- /Recent Posts Section -->
+
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Impact</span>
+          </a>
+          <p>Zelvaros adalah tempat download script mobile legends dan client samp ter'aman tanpa takut akan resiko akun terkena banned atau terkena keylogger</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-youtube"></i></a>
+            <a href=""><i class="bi bi-tiktok"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">ZELVAROS CHANNEL</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="/">Bootstrap</a>
       </div>
     </div>
 
-    <p id="modalDescription" style="font-size: 15px; color: #ddd;"></p>
-    
-    <button class="download-btn" id="downloadBtn">Download</button>
-  </div>
-</div>
+  </footer>
 
-<script>
-  const apps = [
-    {
-      title: "Youtube Vanced",
-      version: "19.47.53",
-      category: "Hiburan",
-      badge: "NO ADS",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Youtube_vanced.png",
-      description: "YouTube ReVanced adalah modifikasi gratis dan sumber terbuka dari aplikasi YouTube resmi untuk Android. Ia menawarkan sejumlah fitur yang tidak tersedia di aplikasi resmi. YouTube ReVanced adalah alternatif yang bagus untuk aplikasi YouTube resmi. Ia menawarkan sejumlah fitur yang tidak tersedia di aplikasi resminya, dan sepenuhnya gratis untuk digunakan. Jika Anda mencari pengalaman YouTube yang lebih bebas iklan, dapat disesuaikan, dan kaya fitur, YouTube ReVanced adalah aplikasi yang tepat untuk Anda.     Jika buffer atau tidak bisa play video LiveStream, silakan buka Setelan » Pengaturan ReVanced » Lain-lain » Palsukan stream video (aktifkan).",
-      download: "https://sfl.gl/Lpha"
-    },
-    {
-      title: "PixelLab",
-      version: "2.1.4",
-      category: "Photo Editor",
-      badge: "NO ADS",
-      icon: "https://zelvaroscnl.github.io/website/images/pixellab.png",
-      description: "PixelLab adalah sebuah aplikasi edit foto sederhana yang berfokus pada kombinasi foto dan teks, bisa foto saja, foto dihiasi teks atau teks saja. Berdasarkan penelusuran Dailysocial, PixelLab hanya tersedia di platform Android",
-      download: "https://sfl.gl/NC5W"
-    },
-    {
-      title: "TXD Tool",
-      version: "1.7.2",
-      category: "Texture Editor",
-      badge: "LATEST",
-      icon: "https://zelvaroscnl.github.io/website/images/txd.png",
-      description: "TXD Tool adalah aplikasi editor texture yang sering di gunakan pemain GTA SA untuk mengimpor tekstur dari berbagai format gambar atau langsung dari file txd.",
-      download: "https://sfl.gl/X0jMiYU"
-    },
-    {
-      title: "GTA Img Tool",
-      version: "1.6.1",
-      category: "Editor File Img",
-      badge: "NO ADS",
-      icon: "https://zelvaroscnl.github.io/website/images/gta-img.jpeg",
-      description: "Fungsi utama dari aplikasi ini adalah menambahkan atau mengganti berkas IMG di GTA SA. ( mengganti dff )",
-      download: "https://sfl.gl/mWkx7cxG"
-    },
-    {
-      title: "Adjustable Generator",
-      version: "1.0.4",
-      category: "Adjustable Cfg",
-      badge: "NO ADS",
-      icon: "https://zelvaroscnl.github.io/website/images/adjustable.jpeg",
-      description: "Aplikasi ini berfungsi sebagai Alat untuk menghasilkan File adjustable.cfg sebagai pengatur posisi HUD dengan bebas.",
-      download: "https://sfl.gl/wOQhA"
-    },
-    {
-      title: "ZArchiver PRO",
-      version: "5.7.4",
-      category: "File Manager",
-      badge: "PREMIUM",
-      icon: "https://www.zarchiver.pro/wp-content/uploads/2021/07/zarchiver.png",
-      description: "Aplikasi ZArchiver digunakan untuk mengelola file, termasuk mengkompres dan mengekstrak berbagai jenis format arsip seperti ZIP dan RAR.",
-      download: "https://sfl.gl/4alI"
-    }
-  ];
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  const appsGrid = document.getElementById("appsGrid");
-  const searchInput = document.getElementById("searchInput");
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-  function renderApps(filter = "") {
-    appsGrid.innerHTML = "";
-    apps
-      .filter(app => app.title.toLowerCase().includes(filter.toLowerCase()))
-      .forEach(app => {
-        const card = document.createElement("div");
-        card.className = "app-card";
-        card.innerHTML = `
-          <div class="badge ${app.badge === 'FULL VERSION' ? 'full' : ''}">${app.badge}</div>
-          <img src="${app.icon}" alt="${app.title}">
-          <div class="app-title">${app.title}</div>
-          <div class="app-version">${app.version}</div>
-          <div class="app-category">${app.category}</div>
-        `;
-        card.addEventListener("click", () => showModal(app));
-        appsGrid.appendChild(card);
-      });
-  }
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-  function showModal(app) {
-    document.getElementById("modalTitle").innerText = app.title;
-    document.getElementById("modalVersion").innerText = `Versi: ${app.version}`;
-    document.getElementById("modalCategory").innerText = `Kategori: ${app.category}`;
-    document.getElementById("modalDescription").innerText = app.description;
-    document.getElementById("modalIcon").src = app.icon;
-    document.getElementById("downloadBtn").onclick = () => window.open(app.download, "_blank");
-    document.getElementById("appModal").style.display = "flex";
-  }
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 
-  function closeModal() {
-    document.getElementById("appModal").style.display = "none";
-  }
-  
-  renderApps();
-  searchInput.addEventListener("input", () => {
-  renderApps(searchInput.value);
-  document.querySelector('.search-icon').style.opacity = searchInput.value ? '0' : '1';
-});
-
-  function toggleMenu() {
-    const menu = document.getElementById("sosmedMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
-  </script>
-  <div class="container">
-    <footer class="footer">
-      <p>Copyright © 2025 ZelvarosChannel</p>
-    </footer>
-  </div>
-
-  <script>
-    // Toggle Sosmed
-    const menuToggle = document.getElementById('menuToggle');
-    const sosmedLinks = document.getElementById('sosmedLinks');
-
-    menuToggle.addEventListener('click', () => {
-      sosmedLinks.style.display = sosmedLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // Accessibility: toggle menu with keyboard (Enter or Space)
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-
-    // Close popup saat klik di luar popup
-    window.addEventListener('click', function(event) {
-      const popupBg = document.getElementById('popupBg');
-      const popup = document.getElementById('popup');
-      if (popupBg.style.display === 'flex' && !popup.contains(event.target)) {
-        closePopup();
-      }
-    });
-
-    function showPopup(number) {
-      document.getElementById('popupContent').innerHTML = `
-        <h3 style="color:#0ff">${number}</h3>
-        <button class="copy-btn" onclick="copyToClipboard('${number}')">Salin</button>
-      `;
-      document.getElementById('popupBg').style.display = 'flex';
-    }
-
-    function closePopup() {
-      document.getElementById('popupBg').style.display = 'none';
-    }
-
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text);
-      alert("Disalin: " + text);
-    }
-
-    function toggleMusicPopup() {
-      const popup = document.getElementById('musicPopup');
-      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function playSong(src) {
-      const audio = document.getElementById('audioPlayer');
-      audio.src = src;
-      audio.play();
-      toggleMusicPopup();
-    }
-
-    // Wall Clock Script
-    function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-            
-            document.getElementById('date').textContent = 
-                `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
-        }
-
-        // Initial call to display clock immediately
-        updateClock();
-        
-        // Update clock every second
-        setInterval(updateClock, 1000);
-  </script>
-
-  <div class="popup-bg" id="popupBg" role="dialog" aria-modal="true" aria-labelledby="popupContent">
-    <div class="popup" id="popup">
-      <div class="close-btn" onclick="closePopup()" role="button" aria-label="Tutup popup" tabindex="0">×</div>
-      <div id="popupContent"></div>
-    </div>
-  </div>
-
-  <div class="music-btn" onclick="toggleMusicPopup()" role="button" aria-label="Toggle musik" tabindex="0">🎵</div>
-  <div class="music-popup" id="musicPopup" aria-hidden="true">
-    <div class="close-btn" onclick="toggleMusicPopup()" role="button" aria-label="Tutup musik popup" tabindex="0">×</div>
-    <div class="music-list">
-      <button onclick="playSong('https://files.catbox.moe/d7vvgz.mp3')">🎵 Fireflies</button>
-      <button onclick="playSong('https://files.catbox.moe/unbo27.mp3')">🎵 Tie me down</button>
-      <button onclick="playSong('https://files.catbox.moe/8smnze.mp3')">🎵 Dj 8 Letters</button>
-    </div>
-  </div>
-
-  <audio id="audioPlayer"></audio>
-
-  <!-- Tombol WhatsApp mengambang di pojok kanan bawah -->
-<a href="https://whatsapp.com/channel/0029VbBUKV8KAwEoVOSvfs1u" target="_blank" rel="noopener noreferrer" class="whatsapp-float-button" aria-label="Chat dengan Customer Service" title="Chat dengan Customer Service">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false">
-    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 100.3 32 0 132.3 0 256c0 45.1 12.1 87.1 33.1 124.7L0 480l101.7-33.5c36.9 20.2 78.8 30.8 122.2 30.8 123.6 0 224-100.3 224-224 0-59.3-23.1-115.1-65.1-157.2zM223.9 438.6c-39.3 0-75.9-12.9-105.1-34.9l-7.5-4.5-60.3 19.9 20.3-58.8-4.9-7.7c-20.7-32.6-31.6-70.3-31.6-109.6 0-114.7 93.5-208.2 208.2-208.2 55.6 0 107.7 21.7 146.9 61 39.2 39.2 61 91.3 61 146.9 0 114.7-93.5 208.2-208.2 208.2zm101.3-138.7c-5.5-2.7-32.5-16-37.5-17.8-5-1.9-8.6-2.7-12.2 2.7-3.6 5.5-14 17.8-17.2 21.5-3.2 3.6-6.5 4.1-12 1.4-32.5-16.3-53.8-29-75.2-65.3-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.6.9-6.7-.5-9.4-1.4-2.7-12.2-29.4-16.7-40.3-4.4-10.8-8.9-9.3-12.2-9.5-3.2-.2-6.9-.2-10.5-.2-3.6 0-9.4 1.4-14.3 6.7-4.9 5.5-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.3 2.7 3.6 37.8 57.7 91.5 80.9 12.8 5.5 22.7 8.8 30.5 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.6 32.5-13.2 37-26 4.5-12.8 4.5-23.7 3.2-26.1-1.3-2.4-5-3.9-10.5-6.6z"/>
-  </svg>
-</a>
-  <noscript><i>Javascript required</i></noscript>
-
-  <script src="//cdn.jsdelivr.net/npm/eruda"></script>
 </body>
-   </html>
+
+      </html>
